@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import TextTransition, { presets } from "react-text-transition";
+const text = ["Forest", "Building", "Tree", "Color"];
 
 const Tools = () => {
+  const [index, setIndex] = React.useState(0);
   const [tools, setTools] = useState([]);
+
   useEffect(() => {
     fetch("services.json")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setIndex((index) => index + 1),
+      1000 // every 3 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
+  console.log(tools);
   return (
     <>
+      <TextTransition
+        text={text[index % text.length]}
+        springConfig={presets.wobbly}
+      />
+
       <h2 className="text-primary text-center text-2xl py-2">OUR TOOLS</h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 px-5">
         {tools?.map((tool) => {
@@ -28,7 +46,12 @@ const Tools = () => {
                   Available quantity :{tool.availableQuentity}
                 </h2>
                 <div class="card-actions justify-end">
-                  <button class="btn btn-primary btn-block">Buy Now</button>
+                  <Link
+                    class="btn btn-primary btn-block"
+                    to={`/purchase/${tool._id}`}
+                  >
+                    Buy Now
+                  </Link>
                 </div>
               </div>
             </div>
