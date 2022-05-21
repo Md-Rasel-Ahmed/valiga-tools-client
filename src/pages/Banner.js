@@ -5,8 +5,8 @@ const Banner = () => {
     <div class="hero min-h-screen ">
       <div class="hero-content flex-col lg:flex-row-reverse">
         <img
-          src="https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/revslider/chromium-slider-b/tools_slide_1.jpg"
-          class="max-w-sm rounded-lg shadow-2xl"
+          src="https://veligaa.com/Home/Image/11449"
+          class="max-w-sm rounded-lg "
         />
         <div>
           <h1 class="text-xl font-bold">BUY FROM US GET YOURS</h1>

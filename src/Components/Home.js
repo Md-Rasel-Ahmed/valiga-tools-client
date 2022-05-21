@@ -3,6 +3,7 @@ import Banner from "../pages/Banner";
 import BuisnessSammary from "../pages/BuisnessSammary";
 import Footer from "../pages/Footer";
 import Tools from "../pages/Tools";
+import Truested from "../pages/Truested";
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
       <Banner></Banner>
       <Tools></Tools>
       <BuisnessSammary></BuisnessSammary>
-      <Footer></Footer>
+      <Truested></Truested>
     </div>
   );
 };
