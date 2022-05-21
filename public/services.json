@@ -1,130 +1,57 @@
 [
   {
     "_id": 1,
-    "name": "Teeth Orthodontics",
-    "slots": [
-      "08.00 AM - 08.30 AM",
-      "08.30 AM - 09.00 AM",
-      "09.00 AM - 9.30 AM",
-      "09.30 AM - 10.00 AM",
-      "10.00 AM - 10.30 AM",
-      "10.30 AM - 11.00 AM",
-      "11.00 AM - 11.30 AM",
-      "11.30 AM - 12.00 AM",
-      "1.00 PM - 1.30 PM",
-      "1.30 PM - 2.00 PM",
-      "2.00 PM - 2.30 PM",
-      "2.30 PM - 3.00 PM",
-      "3.00 PM - 3.30 PM",
-      "3.30 PM - 4.00 PM",
-      "4.00 PM - 4.30 PM",
-      "4.30 PM - 5.00 PM"
-    ]
+    "name": "ALL WEATHER TERRAIN BRAKER AS/PRO",
+    "img":"https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2017/06/prod_5-300x300.jpg",
+    "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,",
+    "minimumOrder":15,
+    "availableQuentity":102,
+    "price":32
   },
   {
     "_id": 2,
-    "name": "Cosmetic Dentistry",
-    "slots": [
-      "08.00 AM - 08.30 AM",
-      "08.30 AM - 09.00 AM",
-      "09.00 AM - 9.30 AM",
-      "09.30 AM - 10.00 AM",
-      "10.00 AM - 10.30 AM",
-      "10.30 AM - 11.00 AM",
-      "11.00 AM - 11.30 AM",
-      "11.30 AM - 12.00 AM",
-      "1.00 PM - 1.30 PM",
-      "1.30 PM - 2.00 PM",
-      "2.00 PM - 2.30 PM",
-      "2.30 PM - 3.00 PM",
-      "3.00 PM - 3.30 PM",
-      "3.30 PM - 4.00 PM",
-      "4.00 PM - 4.30 PM",
-      "4.30 PM - 5.00 PM"
-    ]
+    "name": "PERFECT TITANIUM WHEEL COVER",
+    "img":"https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2017/06/prod_5-300x300.jpg",
+    "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,",
+    "minimumOrder":10,
+    "availableQuentity":60,
+    "price":25
   },
   {
     "_id": 3,
-    "name": "Teeth Cleaning",
-    "slots": [
-      "08.00 AM - 08.30 AM",
-      "08.30 AM - 09.00 AM",
-      "09.00 AM - 9.30 AM",
-      "09.30 AM - 10.00 AM",
-      "10.00 AM - 10.30 AM",
-      "10.30 AM - 11.00 AM",
-      "11.00 AM - 11.30 AM",
-      "11.30 AM - 12.00 AM",
-      "1.00 PM - 1.30 PM",
-      "1.30 PM - 2.00 PM",
-      "2.00 PM - 2.30 PM",
-      "2.30 PM - 3.00 PM",
-      "3.00 PM - 3.30 PM",
-      "3.30 PM - 4.00 PM",
-      "4.00 PM - 4.30 PM",
-      "4.30 PM - 5.00 PM"
-    ]
+    "name": "AIR INTAKE PUMP (GENERAL ELECTRIC)",
+    "img":"https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2017/06/prod_4-300x300.jpg",
+    "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,",
+    "minimumOrder":6,
+    "availableQuentity":35,
+    "price":12
   },
   {
     "_id": 4,
-    "name": "Cavity Protection",
-    "slots": [
-      "08.00 AM - 08.30 AM",
-      "08.30 AM - 09.00 AM",
-      "09.00 AM - 9.30 AM",
-      "09.30 AM - 10.00 AM",
-      "10.00 AM - 10.30 AM",
-      "10.30 AM - 11.00 AM",
-      "11.00 AM - 11.30 AM",
-      "11.30 AM - 12.00 AM",
-      "1.00 PM - 1.30 PM",
-      "1.30 PM - 2.00 PM",
-      "2.00 PM - 2.30 PM",
-      "2.30 PM - 3.00 PM",
-      "3.00 PM - 3.30 PM",
-      "3.30 PM - 4.00 PM",
-      "4.00 PM - 4.30 PM",
-      "4.30 PM - 5.00 PM"
-    ]
+    "name": "BRAKING BLOCKS (MAINTENANCE KIT)",
+    "img":"https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2017/06/prod_1-300x300.jpg",
+    "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,",
+    "minimumOrder":8,
+    "availableQuentity":85,
+    "price":65
   },
   {
     "_id": 5,
-    "name": "Pediatric Dental",
-    "slots": [
-      "08.00 AM - 08.30 AM",
-      "08.30 AM - 09.00 AM",
-      "09.00 AM - 9.30 AM",
-      "09.30 AM - 10.00 AM",
-      "10.00 AM - 10.30 AM",
-      "10.30 AM - 11.00 AM",
-      "11.00 AM - 11.30 AM",
-      "11.30 AM - 12.00 AM",
-      "1.00 PM - 1.30 PM",
-      "1.30 PM - 2.00 PM",
-      "2.00 PM - 2.30 PM",
-      "2.30 PM - 3.00 PM",
-      "3.00 PM - 3.30 PM",
-      "3.30 PM - 4.00 PM",
-      "4.00 PM - 4.30 PM",
-      "4.30 PM - 5.00 PM"
-    ]
+    "name": "COMBO SPORT STEREOS FOR COUPE MODELS",
+    "img":"https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2017/06/prod_6-300x300.jpg",
+    "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,",
+    "minimumOrder":6,
+    "availableQuentity":60,
+    "price":25
   },
   {
     "_id": 6,
-    "name": "Oral Surgery",
-    "slots": [
-   
-      "10.30 AM - 11.00 AM",
-      "11.00 AM - 11.30 AM",
-      "11.30 AM - 12.00 AM",
-      "1.00 PM - 1.30 PM",
-      "1.30 PM - 2.00 PM",
-      "2.00 PM - 2.30 PM",
-      "2.30 PM - 3.00 PM",
-      "3.00 PM - 3.30 PM",
-      "3.30 PM - 4.00 PM",
-      "4.00 PM - 4.30 PM",
-      "4.30 PM - 5.00 PM"
-    ]
+    "name": "BRAKING BLOCKS (MAINTENANCE KIT)",
+    "img":"https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2017/06/prod_1-600x600.jpg",
+    "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,",
+    "minimumOrder":3,
+    "availableQuentity":85,
+    "price":32
   }
+ 
 ]
