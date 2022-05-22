@@ -30,7 +30,7 @@ const Singup = () => {
     formData.append("image", image);
 
     if (data.password !== data.confirmPassword) {
-      alert("password did match");
+      alert("password did not match");
       return;
     }
     if (error) {
@@ -48,20 +48,20 @@ const Singup = () => {
         .then((result) => (imgStored = result.data.url));
       await updateProfile({ photoURL: imgStored });
 
-      fetch("http://localhost:5000/user", {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          name: data.fullName,
-          email: data.email,
-          image: imgStored,
-          role: "user",
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+      // fetch("http://localhost:5000/user", {
+      //   method: "PUT",
+      //   headers: {
+      //     "content-type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     name: data.fullName,
+      //     email: data.email,
+      //     image: imgStored,
+      //     role: "user",
+      //   }),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data));
     }
 
     // data.target.reset();

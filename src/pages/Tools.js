@@ -12,21 +12,16 @@ const Tools = () => {
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
-  React.useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex((index) => index + 1),
-      1000 // every 3 seconds
-    );
-    return () => clearTimeout(intervalId);
-  }, []);
+  // React.useEffect(() => {
+  //   const intervalId = setInterval(
+  //     () => setIndex((index) => index + 1),
+  //     1000 // every 3 seconds
+  //   );
+  //   return () => clearTimeout(intervalId);
+  // }, []);
   console.log(tools);
   return (
     <>
-      <TextTransition
-        text={text[index % text.length]}
-        springConfig={presets.wobbly}
-      />
-
       <h2 className="text-primary text-center text-2xl py-2">OUR TOOLS</h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 px-5">
         {tools?.map((tool) => {

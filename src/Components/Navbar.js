@@ -1,7 +1,12 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
 import logo from "../../src/images/logo.svg";
+import auth from "../firebase.init";
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <div>
       <div class="navbar bg-neutral text-neutral-content">
@@ -69,37 +74,42 @@ const Navbar = () => {
             <li>
               <a>Reviews</a>
             </li>
-            <li className="btn btn-primary">
-              <Link to="/singup">Login</Link>
-            </li>
+
+            {!user?.email && (
+              <li className="btn btn-primary">
+                <Link to="/singup">Login</Link>
+              </li>
+            )}
           </ul>
         </div>
-        <div class="navbar-end">
-          <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full">
-                <img src="https://api.lorem.space/image/face?hash=33791" />
-              </div>
-            </label>
-            <ul
-              tabindex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-primary rounded-box w-52"
-            >
-              <li>
-                <a class="justify-between">
-                  Profile
-                  <span class="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
+        {user?.email && (
+          <div class="navbar-end">
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                  <img src={user?.photoURL} />
+                </div>
+              </label>
+              <ul
+                tabindex="0"
+                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-primary rounded-box w-52"
+              >
+                <li>
+                  <a class="justify-between">
+                    Profile
+                    <span class="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a onClick={() => signOut(auth)}>Logout</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
