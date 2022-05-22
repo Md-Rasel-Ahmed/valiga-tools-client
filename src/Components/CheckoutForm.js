@@ -35,7 +35,7 @@ const CheckoutForm = ({ id }) => {
       alert(error.message);
       console.log("[error]", error);
     } else {
-      fetch(`http://localhost:5000/userAppoinment/${id}`, {
+      fetch(`http://localhost:5000/order/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())

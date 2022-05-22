@@ -11,15 +11,33 @@ const MyOrder = () => {
   let formateDAte = format(date, "PP");
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/userAppoinment?email=${user.email}`)
+      fetch(`http://localhost:5000/order?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setMyOrder([...data].reverse());
         });
     }
   }, [user]);
-  console.log(myOrder);
-  const handlePayments = () => {};
+  //   remove item from order list
+  //    const { isLoading, error, data, refetch } = useQuery(
+  //      ["appoinment", formateDAte],
+  //      () =>
+  //        fetch(`http://localhost:5000/available?date=${formateDAte}`).then(
+  //          (res) => res.json()
+  //        )
+  //    );
+
+  //    if (isLoading) {
+  //      return <Loading />;
+  //    }
+
+  const removeOrder = (id) => {
+    let deleteItem = myOrder.find((item) => item._id === id);
+    if (deleteItem.paid === true) {
+      alert("Are you sure");
+    }
+  };
+
   return (
     <div>
       {myOrder.length > 0 ? (
@@ -38,6 +56,7 @@ const MyOrder = () => {
                 <th>Item Price</th>
                 <th>Item Quantity</th>
                 <th>Payment</th>
+                <th>Cancle</th>
                 <th></th>
               </tr>
             </thead>
@@ -68,6 +87,14 @@ const MyOrder = () => {
                         ) : (
                           <Link to={`/dasboard/payment/${item._id}`}>Pay</Link>
                         )}
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => removeOrder(item._id)}
+                        className=" btn btn-error text-white"
+                      >
+                        Cencle
                       </button>
                     </td>
                   </tr>
