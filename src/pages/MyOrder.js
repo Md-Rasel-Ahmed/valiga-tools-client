@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 import auth from "../firebase.init";
 
 const MyOrder = () => {
-  const [myAppoinments, setMyAppoinments] = useState([]);
+  const [myOrder, setMyOrder] = useState([]);
   const [user, loading, error] = useAuthState(auth);
   const date = new Date();
   let formateDAte = format(date, "PP");
@@ -14,15 +14,15 @@ const MyOrder = () => {
       fetch(`http://localhost:5000/userAppoinment?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
-          setMyAppoinments([...data].reverse());
+          setMyOrder([...data].reverse());
         });
     }
   }, [user]);
-
+  console.log(myOrder);
   const handlePayments = () => {};
   return (
     <div>
-      {myAppoinments.length > 0 ? (
+      {myOrder.length > 0 ? (
         <div class="overflow-x-auto w-full">
           <table class="table w-full ">
             {/* <!-- head --> */}
@@ -34,42 +34,39 @@ const MyOrder = () => {
                   </label>
                 </th>
                 <th>Email</th>
-                <th>Appoinemnt Name</th>
-                <th>Appoinment time</th>
-                <th>Appoinment Date</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Item Quantity</th>
                 <th>Payment</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               {/* <!-- row 1 --> */}
-              {myAppoinments?.map((a) => {
+              {myOrder?.map((item) => {
                 return (
-                  <tr className={a.date !== formateDAte && "line-through"}>
+                  <tr>
                     <th>
                       <label>
                         <input type="checkbox" class="checkbox" />
                       </label>
                     </th>
                     <td>
-                      <div class="font-bold">{a.email}</div>
+                      <div class="font-bold">{item.email}</div>
                       {/* <div class="text-sm opacity-50">United States</div> */}
                     </td>
-                    <td>{a.servicesName}</td>
-                    <td>{a.time}</td>
+                    <td>{item.name}</td>
+                    <td>${item.totalPrice}</td>
 
-                    <td>{a.date}</td>
+                    <td>{item.quantity}</td>
                     <td>
                       <button
-                        class={a.paid ? "btn btn-accent" : "btn btn-primary"}
-                        disabled={a.date !== formateDAte}
+                        class={item.paid ? "btn btn-accent" : "btn btn-primary"}
                       >
-                        {a.paid ? (
-                          <label for="my-modal-4">Zoom link here</label>
+                        {item.paid ? (
+                          <label for="my-modal-4">Paid</label>
                         ) : (
-                          <Link to={`/profile/payment/${a._id}`}>
-                            Pay for appointment
-                          </Link>
+                          <Link to={`/profile/payment/${item._id}`}>Pay</Link>
                         )}
                       </button>
                     </td>
@@ -81,9 +78,7 @@ const MyOrder = () => {
           </table>
         </div>
       ) : (
-        <h2 className="text-xl font-bold text-accent">
-          Your Appoinments Are Emty
-        </h2>
+        <h2 className="text-xl font-bold text-accent">Your Orders Are Emty</h2>
       )}
 
       {/* <!-- Put this part before </body> tag --> */}

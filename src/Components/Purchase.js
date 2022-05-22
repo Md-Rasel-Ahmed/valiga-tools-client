@@ -47,6 +47,7 @@ const Purchase = () => {
         price: item?.price,
         quantity: quantity || item?.minimumOrder,
         totalPrice: totalPrice,
+        padi: false,
       }),
     })
       .then((res) => res.json())
