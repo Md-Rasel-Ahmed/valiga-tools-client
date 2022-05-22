@@ -69,6 +69,9 @@ const Navbar = () => {
             <li>
               <a>Reviews</a>
             </li>
+            <li className="btn btn-primary">
+              <Link to="/singup">Login</Link>
+            </li>
           </ul>
         </div>
         <div class="navbar-end">

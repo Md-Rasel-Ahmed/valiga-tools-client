@@ -45,6 +45,9 @@ const Tools = () => {
                 <h2 class="card-title text-primary text-bold">
                   Available quantity :{tool.availableQuentity}
                 </h2>
+                <h2 class="card-title text-accent text-bold">
+                  Price :${tool.price}
+                </h2>
                 <div class="card-actions justify-end">
                   <Link
                     class="btn btn-primary btn-block"
