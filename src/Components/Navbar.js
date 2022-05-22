@@ -77,7 +77,7 @@ const Navbar = () => {
 
             {!user?.email && (
               <li className="btn btn-primary">
-                <Link to="/singup">Login</Link>
+                <Link to="/login">Login</Link>
               </li>
             )}
           </ul>
@@ -95,10 +95,7 @@ const Navbar = () => {
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-primary rounded-box w-52"
               >
                 <li>
-                  <a class="justify-between">
-                    Profile
-                    <span class="badge">New</span>
-                  </a>
+                  <Link to="/dasboard">Dashboard</Link>
                 </li>
                 <li>
                   <a>Settings</a>

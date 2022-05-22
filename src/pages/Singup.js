@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import auth from "../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
+} from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 
 const Singup = () => {
@@ -10,7 +13,7 @@ const Singup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, upError] = useUpdateProfile(auth);
-
+  const [sendEmailVerification] = useSendEmailVerification(auth);
   const {
     register,
     resetField,
@@ -24,6 +27,7 @@ const Singup = () => {
   const imgKey = "adbb7d7935ea9c40a8b8dfa8127a1bdc";
 
   const onSubmit = async (data) => {
+    console.log(data);
     const image = data.file[0];
     const url = `https://api.imgbb.com/1/upload?key=${imgKey}`;
     const formData = new FormData();
@@ -46,22 +50,22 @@ const Singup = () => {
       })
         .then((res) => res.json())
         .then((result) => (imgStored = result.data.url));
-      await updateProfile({ photoURL: imgStored });
-
-      // fetch("http://localhost:5000/user", {
-      //   method: "PUT",
-      //   headers: {
-      //     "content-type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     name: data.fullName,
-      //     email: data.email,
-      //     image: imgStored,
-      //     role: "user",
-      //   }),
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => console.log(data));
+      await updateProfile({ photoURL: imgStored, displayName: data.fullName });
+      await sendEmailVerification(data.email);
+      fetch("http://localhost:5000/user", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.fullName,
+          email: data.email,
+          image: imgStored,
+          role: "user",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
     }
 
     // data.target.reset();
