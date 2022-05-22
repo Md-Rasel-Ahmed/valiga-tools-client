@@ -2,45 +2,55 @@ import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import Loading from "../Components/Loading";
+import { useQuery } from "react-query";
 import auth from "../firebase.init";
-
 const MyOrder = () => {
-  const [myOrder, setMyOrder] = useState([]);
-  const [user, loading, error] = useAuthState(auth);
+  //   const [myOrder, setMyOrder] = useState([]);
+  const [user] = useAuthState(auth);
   const date = new Date();
-  let formateDAte = format(date, "PP");
-  useEffect(() => {
-    if (user) {
-      fetch(`http://localhost:5000/order?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setMyOrder([...data].reverse());
-        });
-    }
-  }, [user]);
-  //   remove item from order list
-  //    const { isLoading, error, data, refetch } = useQuery(
-  //      ["appoinment", formateDAte],
-  //      () =>
-  //        fetch(`http://localhost:5000/available?date=${formateDAte}`).then(
-  //          (res) => res.json()
-  //        )
-  //    );
+  const {
+    isLoading,
+    error,
+    data: myOrder,
+    refetch,
+  } = useQuery("order", () =>
+    fetch(`http://localhost:5000/order?email=${user.email}`).then((res) =>
+      res.json()
+    )
+  );
 
-  //    if (isLoading) {
-  //      return <Loading />;
-  //    }
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  function fetching(id) {
+    fetch(`http://localhost:5000/order/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 
   const removeOrder = (id) => {
-    let deleteItem = myOrder.find((item) => item._id === id);
+    // console.log(id);
+    let deleteItem = myOrder?.find((item) => item._id === id);
     if (deleteItem.paid === true) {
-      alert("Are you sure");
+      fetching(id);
+      refetch();
+
+      refetch();
+    } else {
+      fetching(id);
+      refetch();
     }
   };
 
   return (
     <div>
-      {myOrder.length > 0 ? (
+      {myOrder?.length > 0 ? (
         <div class="overflow-x-auto w-full">
           <table class="table w-full ">
             {/* <!-- head --> */}
@@ -56,7 +66,7 @@ const MyOrder = () => {
                 <th>Item Price</th>
                 <th>Item Quantity</th>
                 <th>Payment</th>
-                <th>Cancle</th>
+                <th>Action</th>
                 <th></th>
               </tr>
             </thead>
@@ -90,10 +100,15 @@ const MyOrder = () => {
                       </button>
                     </td>
                     <td>
-                      <button
+                      {/* <a
                         onClick={() => removeOrder(item._id)}
-                        className=" btn btn-error text-white"
+                        href={item.paid && "#my-modal-2"}
+                        class="btn"
                       >
+                        Cancle
+                      </a> */}
+
+                      <button className=" btn btn-error text-white">
                         Cencle
                       </button>
                     </td>
@@ -126,6 +141,27 @@ const MyOrder = () => {
           </form>
         </label>
       </label>
+
+      {/* <!-- Put this part before </body> tag --> */}
+      <div class="modal" id="my-modal-2">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">
+            Congratulations random Interner user!
+          </h3>
+          <p class="py-4">
+            You've been selected for a chance to get one year of subscription to
+            use Wikipedia for free!
+          </p>
+          <div class="modal-action">
+            <a href="#" class="btn btn-error">
+              Yes
+            </a>
+            <a href="#" class="btn btn-success">
+              No
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

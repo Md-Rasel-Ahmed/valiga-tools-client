@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import EditProfile from "./Components/EditProfile";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
 import Payment from "./Components/Payment";
@@ -9,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Footer from "./pages/Footer";
 import Login from "./pages/Login";
 import MyOrder from "./pages/MyOrder";
+import MyProfiile from "./pages/MyProfiile";
 import Singup from "./pages/Singup";
 function App() {
   return (
@@ -27,9 +29,21 @@ function App() {
         ></Route>
         <Route path="/singup" element={<Singup></Singup>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="dasboard" element={<Dashboard></Dashboard>}>
+        <Route
+          path="dasboard"
+          element={
+            <RequirAuth>
+              <Dashboard></Dashboard>
+            </RequirAuth>
+          }
+        >
           <Route path="myorder" element={<MyOrder></MyOrder>}></Route>
+          <Route path="myprofile" element={<MyProfiile></MyProfiile>}></Route>
           <Route path="payment/:id" element={<Payment></Payment>}></Route>
+          <Route
+            path="myprofile/eidtprofile"
+            element={<EditProfile></EditProfile>}
+          ></Route>
         </Route>
       </Routes>
       <Footer></Footer>

@@ -50,7 +50,11 @@ const Singup = () => {
       })
         .then((res) => res.json())
         .then((result) => (imgStored = result.data.url));
-      await updateProfile({ photoURL: imgStored, displayName: data.fullName });
+      await updateProfile({
+        photoURL: imgStored,
+        displayName: data.fullName,
+        phoneNumber: data.phone,
+      });
       await sendEmailVerification(data.email);
       fetch("http://localhost:5000/user", {
         method: "PUT",
@@ -61,6 +65,7 @@ const Singup = () => {
           name: data.fullName,
           email: data.email,
           image: imgStored,
+          phone: data.phone,
           role: "user",
         }),
       })
