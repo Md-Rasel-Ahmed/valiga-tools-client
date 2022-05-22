@@ -66,7 +66,7 @@ const MyOrder = () => {
                         {item.paid ? (
                           <label for="my-modal-4">Paid</label>
                         ) : (
-                          <Link to={`/profile/payment/${item._id}`}>Pay</Link>
+                          <Link to={`/dasboard/payment/${item._id}`}>Pay</Link>
                         )}
                       </button>
                     </td>

@@ -11,6 +11,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
+  console.log(id);
   return (
     <div>
       <h1>Payments</h1>
