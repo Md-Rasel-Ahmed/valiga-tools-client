@@ -14,6 +14,10 @@ import MyOrder from "./pages/MyOrder";
 import MyProfiile from "./pages/MyProfiile";
 import Singup from "./pages/Singup";
 import { ToastContainer } from "react-toastify";
+import ReuirUser from "./Components/RequirUser";
+import MangeAllOrder from "./Components/MangeAllOrder";
+import AddProduct from "./Components/AddProduct";
+import ReuirAdmin from "./Components/ReuirAdmin";
 
 function App() {
   return (
@@ -40,10 +44,41 @@ function App() {
             </RequirAuth>
           }
         >
-          <Route path="myorder" element={<MyOrder></MyOrder>}></Route>
-          <Route path="addreview" element={<AddReview></AddReview>}></Route>
+          {/* requir user auth */}
+          <Route
+            element={
+              <ReuirUser>
+                <Route path="myorder" element={<MyOrder></MyOrder>}></Route>
+
+                <Route
+                  path="addreview"
+                  element={<AddReview></AddReview>}
+                ></Route>
+
+                <Route path="payment/:id" element={<Payment></Payment>}></Route>
+              </ReuirUser>
+            }
+          ></Route>
+
+          {/* Requir Admin auth */}
+          <Route
+            element={
+              <ReuirAdmin>
+                <Route
+                  path="manageorder"
+                  element={<MangeAllOrder></MangeAllOrder>}
+                ></Route>
+
+                <Route
+                  path="addproduct"
+                  element={<AddProduct></AddProduct>}
+                ></Route>
+              </ReuirAdmin>
+            }
+          ></Route>
+
           <Route path="myprofile" element={<MyProfiile></MyProfiile>}></Route>
-          <Route path="payment/:id" element={<Payment></Payment>}></Route>
+
           <Route
             path="myprofile/eidtprofile"
             element={<EditProfile></EditProfile>}

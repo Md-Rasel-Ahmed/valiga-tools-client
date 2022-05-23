@@ -52,13 +52,16 @@ const Dashboard = () => {
             {currentUser?.role === "admin" && (
               <>
                 <li>
-                  <Link to="allusers">All Users</Link>
+                  <Link to="manageorder">Manage All Orders</Link>
                 </li>
                 <li>
-                  <Link to="doctors">Add Doctors</Link>
+                  <Link to="addproduct">Add A Product</Link>
                 </li>
                 <li>
-                  <Link to="mangedoctor">Mange Doctors</Link>
+                  <Link to="makeadmin">Make Admin</Link>
+                </li>
+                <li>
+                  <Link to="manageproduct">Manage Products</Link>
                 </li>
               </>
             )}
