@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../firebase.init";
 
 const Login = () => {
@@ -10,6 +11,11 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message.slice(22, -2));
+    }
+  }, [error]);
   let from = location.state?.from?.pathname || "/";
   if (user) {
     navigate(from, { replace: true });
@@ -21,9 +27,6 @@ const Login = () => {
       e.target.email.value,
       e.target.password.value
     );
-    if (error) {
-      alert(error.message);
-    }
   };
   return (
     <div className="py-5 flex justify-center">

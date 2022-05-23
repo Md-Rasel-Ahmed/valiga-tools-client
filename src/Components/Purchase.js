@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../firebase.init";
 
 const Purchase = () => {
@@ -17,16 +18,22 @@ const Purchase = () => {
         setItem(clickedItems);
       });
   }, []);
-
   // handle quantity change
   const handleQuantity = async (e) => {
     e.preventDefault();
     const quantity = parseInt(e.target.quantity.value);
-    setQuantity(quantity);
     if (quantity < parseInt(item.minimumOrder)) {
-      alert(`Sorry you have to taken minimum ${item.minimumOrder} products`);
+      toast.error(`You must take a minimum of ${item.minimumOrder} products `);
       return;
     }
+    if (quantity > parseInt(item.availableQuentity)) {
+      toast.error(
+        `You must take a maximum of ${item.availableQuentity} products `
+      );
+      return;
+    }
+    setQuantity(quantity);
+
     let totalPrice = item.price * quantity;
     setPrice(totalPrice);
     // console.log(totalPrice);
@@ -53,7 +60,7 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
-  console.log(price);
+
   return (
     <div className="grid lg:grid-cols-2 justify-items-center  p-5">
       <div>

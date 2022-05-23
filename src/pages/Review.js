@@ -1,64 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReactStars from "react-rating-stars-component";
 
 const Review = () => {
+  const [allReviews, setAllReviews] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/review")
+      .then((res) => res.json())
+      .then((data) => setAllReviews(data));
+  }, []);
   return (
     <div className="p-5">
       <h2 className="text-2xl font-bold text-primary py-2 text-center">
         Customers Review
       </h2>
-      <div class="lg:w-1/2 sm:w-4/5 md:w-4/5 m-auto p-5 mb-5 card  bg-base-100 shadow-xl">
-        <div className="flex gap-2">
-          <div class="avatar">
-            <div class="w-24 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=92310" />
-            </div>
-          </div>
-          <div>
-            <div class="rating">
-              <input
-                type="radio"
-                disabled
-                name="rating-2"
-                class="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                disabled
-                name="rating-2"
-                class="mask mask-star-2 bg-orange-400"
-                checked
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                disabled
-                class="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                disabled
-                name="rating-2"
-                class="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                disabled
-                name="rating-2"
-                class="mask mask-star-2 bg-orange-400"
-              />
-              <h2 className="px-2">23/22/254</h2>
-            </div>
-            <h1 className="text-xl font-bold">Md Rasel Ahmed</h1>
-          </div>
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci sed
-          culpa animi, quisquam sint similique quidem, debitis amet ratione
-          numquam ab a? Quas itaque nostrum debitis possimus? Et omnis,
-          veritatis dolorem nisi s
-        </p>
-      </div>
+
       <hr />
+      {allReviews?.map((review) => {
+        return (
+          <div class="lg:w-1/2 sm:w-4/5 md:w-4/5 m-auto p-5 mb-5 card  bg-base-100 shadow-xl">
+            <div className="flex gap-2">
+              <div class="avatar">
+                <div class="w-24 rounded-full">
+                  <img src={review.img} />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ReactStars
+                    count={5}
+                    // onChange={(e) => ratingChanged(e)}
+                    size={24}
+                    activeColor="#ffd700"
+                    value={review.rating}
+                    edit={false}
+                  />
+
+                  <h2 className="px-2">{review.date}</h2>
+                </div>
+                <h1 className="text-xl font-bold">{review.name}</h1>
+              </div>
+            </div>
+            <p>{review.review}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };

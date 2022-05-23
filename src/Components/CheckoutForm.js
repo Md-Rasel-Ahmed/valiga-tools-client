@@ -1,5 +1,6 @@
 import React from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { toast } from "react-toastify";
 
 const CheckoutForm = ({ id }) => {
   const stripe = useStripe();
@@ -32,10 +33,10 @@ const CheckoutForm = ({ id }) => {
     });
 
     if (error) {
-      alert(error.message);
+      toast.error(error.message);
       console.log("[error]", error);
     } else {
-      fetch(`http://localhost:5000/order/${id}`, {
+      await fetch(`http://localhost:5000/order/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())
@@ -43,6 +44,7 @@ const CheckoutForm = ({ id }) => {
 
       console.log("payment success");
       console.log("[PaymentMethod]", paymentMethod);
+      toast.success("Payment successful");
     }
   };
   return (

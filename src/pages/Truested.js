@@ -3,7 +3,11 @@ import React from "react";
 const Truested = () => {
   return (
     <div className="container p-5">
-      <h1 className="text-primary text-xl font-bold">WE ARE TRUSTED BY</h1>
+      <h1 className="text-2xl font-bold text-primary py-2 text-center">
+        WE ARE TRUSTED BY
+      </h1>
+      <hr />
+      <br />
       <div className=" grid lg:grid-cols-6">
         <img
           src="https://chromium.themes.zone/toolshop/wp-content/uploads/sites/14/2019/03/brand-6-300x129.png"

@@ -5,9 +5,11 @@ import { Link, Outlet } from "react-router-dom";
 import Loading from "../Components/Loading";
 import { useQuery } from "react-query";
 import auth from "../firebase.init";
+import Modal from "../Components/Modal";
 const MyOrder = () => {
   //   const [myOrder, setMyOrder] = useState([]);
   const [user] = useAuthState(auth);
+  const [storeId, setStoreId] = useState("");
   const date = new Date();
   const {
     isLoading,
@@ -31,6 +33,7 @@ const MyOrder = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        refetch();
       });
   }
 
@@ -39,12 +42,20 @@ const MyOrder = () => {
     let deleteItem = myOrder?.find((item) => item._id === id);
     if (deleteItem.paid === true) {
       fetching(id);
-      refetch();
-
-      refetch();
+      // refetch();
     } else {
       fetching(id);
-      refetch();
+    }
+  };
+  //delete item using modal dialog
+  const handleDeleteWithConfirmation = (id) => {
+    // console.log(id);
+    let deleteItem = myOrder?.find((item) => item._id === id);
+    if (deleteItem.paid === true) {
+      fetching(id);
+      // refetch();
+    } else {
+      fetching(id);
     }
   };
 
@@ -90,27 +101,34 @@ const MyOrder = () => {
                     <td>{item.quantity}</td>
                     <td>
                       <button
-                        class={item.paid ? "btn btn-accent" : "btn btn-primary"}
+                        class={
+                          item.paid ? "btn btn-success" : "btn btn-primary"
+                        }
                       >
                         {item.paid ? (
-                          <label for="my-modal-4">Paid</label>
+                          <button className="btn btn-success">Paid</button>
                         ) : (
                           <Link to={`/dasboard/payment/${item._id}`}>Pay</Link>
                         )}
                       </button>
                     </td>
                     <td>
-                      {/* <a
-                        onClick={() => removeOrder(item._id)}
-                        href={item.paid && "#my-modal-2"}
-                        class="btn"
-                      >
-                        Cancle
-                      </a> */}
-
-                      <button className=" btn btn-error text-white">
-                        Cencle
-                      </button>
+                      {item.paid ? (
+                        <a
+                          onClick={() => removeOrder(item._id)}
+                          class="btn btn-error"
+                        >
+                          Cancle
+                        </a>
+                      ) : (
+                        <label
+                          for="my-modal"
+                          onClick={() => setStoreId(item._id)}
+                          class="btn modal-button btn-error"
+                        >
+                          Cancle
+                        </label>
+                      )}
                     </td>
                   </tr>
                 );
@@ -122,29 +140,12 @@ const MyOrder = () => {
       ) : (
         <h2 className="text-xl font-bold text-accent">Your Orders Are Emty</h2>
       )}
-
+      {/* modal for delete confirmation  */}
       {/* <!-- Put this part before </body> tag --> */}
-      <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-      <label for="my-modal-4" class="modal cursor-pointer">
-        <label class="modal-box relative " for="">
-          <form action="">
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              required
-              class="input input-bordered mt-3 block"
-            />
-            <button type="submit" class="btn btn-primary mt-2">
-              JOIN
-            </button>
-          </form>
-        </label>
-      </label>
-
-      {/* <!-- Put this part before </body> tag --> */}
-      <div class="modal" id="my-modal-2">
+      <input type="checkbox" id="my-modal" class="modal-toggle" />
+      <div class="modal">
         <div class="modal-box">
+          c
           <h3 class="font-bold text-lg">
             Congratulations random Interner user!
           </h3>
@@ -153,12 +154,20 @@ const MyOrder = () => {
             use Wikipedia for free!
           </p>
           <div class="modal-action">
-            <a href="#" class="btn btn-error">
-              Yes
-            </a>
-            <a href="#" class="btn btn-success">
+            <label
+              // onClick={handleDeleteWithConfirmation}
+              for="my-modal"
+              class="btn btn-accent"
+            >
               No
-            </a>
+            </label>
+            <label
+              onClick={() => handleDeleteWithConfirmation(storeId)}
+              for="my-modal"
+              class="btn btn-error"
+            >
+              Yes
+            </label>
           </div>
         </div>
       </div>

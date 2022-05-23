@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import AddReview from "./Components/AddReview";
 import EditProfile from "./Components/EditProfile";
 import Home from "./Components/Home";
@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import MyOrder from "./pages/MyOrder";
 import MyProfiile from "./pages/MyProfiile";
 import Singup from "./pages/Singup";
+import { ToastContainer } from "react-toastify";
+
 function App() {
   return (
     <div>
@@ -49,6 +51,7 @@ function App() {
         </Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import ReactStars from "react-rating-stars-component";
 import auth from "../firebase.init";
+import { format } from "date-fns";
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);
   const [user] = useAuthState(auth);
+  let formateDAte = format(new Date(), "PP");
   const handleReview = (e) => {
     e.preventDefault();
     const review = e.target.review.value;
@@ -22,6 +24,9 @@ const AddReview = () => {
           email: user?.email,
           review: review,
           rating: rating,
+          name: user?.displayName,
+          date: formateDAte,
+          img: user?.photoURL,
         }),
       })
         .then((res) => res.json())
@@ -37,6 +42,7 @@ const AddReview = () => {
       <h2 className="text-2xl font-bold text-primary py-2">Add a new review</h2>
       <form onSubmit={handleReview}>
         <textarea
+          required
           class="input input-bordered mt-3 block w-80"
           name="review"
           id=""
