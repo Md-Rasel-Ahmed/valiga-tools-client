@@ -19,6 +19,7 @@ import MangeAllOrder from "./Components/MangeAllOrder";
 import ReuirAdmin from "./Components/ReuirAdmin";
 import AddProduct from "./Components/AddProduct";
 import AllUsers from "./Components/AllUser";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -47,16 +48,26 @@ function App() {
         >
           {/* requir user auth */}
           <Route
+            path="myorder"
             element={
               <ReuirUser>
-                <Route path="myorder" element={<MyOrder></MyOrder>}></Route>
-
-                <Route
-                  path="addreview"
-                  element={<AddReview></AddReview>}
-                ></Route>
-
-                <Route path="payment/:id" element={<Payment></Payment>}></Route>
+                <MyOrder></MyOrder>
+              </ReuirUser>
+            }
+          ></Route>
+          <Route
+            path="addreview"
+            element={
+              <ReuirUser>
+                <AddReview></AddReview>
+              </ReuirUser>
+            }
+          ></Route>
+          <Route
+            path="payment/:id"
+            element={
+              <ReuirUser>
+                <Payment></Payment>
               </ReuirUser>
             }
           ></Route>
@@ -95,6 +106,8 @@ function App() {
             element={<EditProfile></EditProfile>}
           ></Route>
         </Route>
+        {/* blog route */}
+        <Route path="/blog" element={<Blog></Blog>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />
