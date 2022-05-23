@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddReview from "./Components/AddReview";
 import EditProfile from "./Components/EditProfile";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
@@ -38,6 +39,7 @@ function App() {
           }
         >
           <Route path="myorder" element={<MyOrder></MyOrder>}></Route>
+          <Route path="addreview" element={<AddReview></AddReview>}></Route>
           <Route path="myprofile" element={<MyProfiile></MyProfiile>}></Route>
           <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route
