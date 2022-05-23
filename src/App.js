@@ -16,8 +16,8 @@ import Singup from "./pages/Singup";
 import { ToastContainer } from "react-toastify";
 import ReuirUser from "./Components/RequirUser";
 import MangeAllOrder from "./Components/MangeAllOrder";
-import AddProduct from "./Components/AddProduct";
 import ReuirAdmin from "./Components/ReuirAdmin";
+import AddProduct from "./Components/AddProduct";
 
 function App() {
   return (
@@ -61,18 +61,20 @@ function App() {
           ></Route>
 
           {/* Requir Admin auth */}
+
           <Route
+            path="manageorder"
             element={
               <ReuirAdmin>
-                <Route
-                  path="manageorder"
-                  element={<MangeAllOrder></MangeAllOrder>}
-                ></Route>
-
-                <Route
-                  path="addproduct"
-                  element={<AddProduct></AddProduct>}
-                ></Route>
+                <MangeAllOrder></MangeAllOrder>
+              </ReuirAdmin>
+            }
+          ></Route>
+          <Route
+            path="addproduct"
+            element={
+              <ReuirAdmin>
+                <AddProduct></AddProduct>
               </ReuirAdmin>
             }
           ></Route>

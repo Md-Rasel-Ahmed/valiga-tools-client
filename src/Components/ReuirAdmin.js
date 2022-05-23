@@ -1,12 +1,11 @@
 import { Outlet } from "react-router-dom";
-import useCurrentUser from "../hooks/currentUser";
-const ReuirAdmin = () => {
+import useCurrentUser from "../Hooks/userCurrentUser";
+const ReuirAdmin = ({ children }) => {
   const [currentUser] = useCurrentUser();
 
-  if (currentUser?.role === "user") {
+  if (currentUser?.role !== "admin") {
     return;
   }
-  return <Outlet />;
+  return children;
 };
-
 export default ReuirAdmin;
