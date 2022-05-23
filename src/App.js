@@ -18,6 +18,7 @@ import ReuirUser from "./Components/RequirUser";
 import MangeAllOrder from "./Components/MangeAllOrder";
 import ReuirAdmin from "./Components/ReuirAdmin";
 import AddProduct from "./Components/AddProduct";
+import AllUsers from "./Components/AllUser";
 
 function App() {
   return (
@@ -75,6 +76,14 @@ function App() {
             element={
               <ReuirAdmin>
                 <AddProduct></AddProduct>
+              </ReuirAdmin>
+            }
+          ></Route>
+          <Route
+            path="makeadmin"
+            element={
+              <ReuirAdmin>
+                <AllUsers></AllUsers>
               </ReuirAdmin>
             }
           ></Route>
