@@ -154,7 +154,7 @@ const Singup = () => {
           )}
           <input
             {...register("phone", { required: true })}
-            type="number"
+            type="phone"
             placeholder="Phone Number"
             class="input input-bordered mt-3 block  w-80"
           />

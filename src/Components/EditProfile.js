@@ -1,29 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
+import useCurrentUser from "../Hooks/userCurrentUser";
 
 const EditProfile = () => {
-  const [user] = useAuthState(auth);
+  const [currentUser] = useCurrentUser();
+
+  const [name, setName] = useState(currentUser?.name);
+  const [phone, setPhone] = useState(currentUser?.phone);
+  const [location, setLocation] = useState("");
+  const [fbLink, setFbLink] = useState("");
+  console.log(currentUser);
+  // update user profiles
+  const handleUpdateUserProfile = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:5000/user", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: currentUser?.email,
+        phone: phone,
+        location: location,
+        fbLink: fbLink,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <div>
-      <form className="py-5">
+      <form onSubmit={handleUpdateUserProfile} className="py-5">
         <p>Full Name</p>
         <input
+          required
           type="text"
           name="name"
-          placeholder={user?.displayName}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
           class="input input-bordered mt-3 block  w-80"
         />
         <input
           type="email"
           name="email"
-          placeholder={user?.email}
+          value={currentUser?.email}
+          disabled
           class="input input-bordered mt-3 block  w-80"
         />
+        <p>Phone Number</p>
         <input
-          type="number"
+          type="phone"
           name="number"
-          placeholder={user?.phoneNumber}
+          onChange={(e) => setPhone(e.target.value)}
+          value={phone}
           class="input input-bordered mt-3 block  w-80"
         />
         <p>Select your Education level</p>
@@ -36,13 +68,26 @@ const EditProfile = () => {
           placeholder="Institution Name"
           class="input input-bordered mt-3 block  w-80"
         ></textarea>
-        <input />
+        <p>Location</p>
         <input
-          type="password"
-          name="password"
-          placeholder="Password"
+          type="location"
+          name="text"
+          onChange={(e) => setLocation(e.target.value)}
+          value={location}
+          placeholder="location"
           class="input input-bordered mt-3 block  w-80"
         />
+        <p>Fb Profile Link </p>
+        <input
+          type="fbProfile"
+          name="text"
+          onChange={(e) => setFbLink(e.target.value)}
+          value={fbLink}
+          placeholder="Fb Profile link"
+          class="input input-bordered mt-3 block  w-80"
+        />
+        <input />
+
         <button type="submit" class="btn btn-dark btn-block mt-3 ">
           Save And Change
         </button>

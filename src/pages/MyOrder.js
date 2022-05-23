@@ -114,12 +114,13 @@ const MyOrder = () => {
                     </td>
                     <td>
                       {item.paid ? (
-                        <a
-                          onClick={() => removeOrder(item._id)}
-                          class="btn btn-error"
-                        >
-                          Cancle
-                        </a>
+                        // <a
+                        //   onClick={() => removeOrder(item._id)}
+                        //   class="btn btn-error"
+                        // >
+                        //   Cancle
+                        // </a>
+                        ""
                       ) : (
                         <label
                           for="my-modal"
@@ -145,14 +146,10 @@ const MyOrder = () => {
       <input type="checkbox" id="my-modal" class="modal-toggle" />
       <div class="modal">
         <div class="modal-box">
-          c
           <h3 class="font-bold text-lg">
-            Congratulations random Interner user!
+            Are you sure you want to delete this item?
           </h3>
-          <p class="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+
           <div class="modal-action">
             <label
               // onClick={handleDeleteWithConfirmation}
