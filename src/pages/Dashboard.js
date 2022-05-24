@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/user?email=${user.email}`)
+      fetch(`https://valiga-hardware.herokuapp.com/user?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           const currentUser = data.find((u) => u.email === user.email);

@@ -11,7 +11,7 @@ const Purchase = () => {
   const [quantity, setQuantity] = useState(0);
   const [user] = useAuthState(auth);
   useEffect(() => {
-    fetch("http://localhost:5000/")
+    fetch("https://valiga-hardware.herokuapp.com/")
       .then((res) => res.json())
       .then((data) => {
         const clickedItems = data.find((i) => i._id === id);
@@ -43,7 +43,7 @@ const Purchase = () => {
   const handlePurchase = (e) => {
     e.preventDefault();
     const totalPrice = price || item?.price * item?.minimumOrder;
-    fetch("http://localhost:5000/order", {
+    fetch("https://valiga-hardware.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

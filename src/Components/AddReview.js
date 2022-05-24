@@ -15,7 +15,7 @@ const AddReview = () => {
       alert("please select a rating");
       return;
     } else {
-      fetch("http://localhost:5000/review", {
+      fetch("https://valiga-hardware.herokuapp.com/review", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

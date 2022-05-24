@@ -14,7 +14,7 @@ const EditProfile = () => {
   // update user profiles
   const handleUpdateUserProfile = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user", {
+    fetch("https://valiga-hardware.herokuapp.com/user", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

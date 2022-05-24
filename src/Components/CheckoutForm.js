@@ -29,7 +29,7 @@ const CheckoutForm = ({ id }) => {
       toast.error(error.message);
       console.log("[error]", error);
     } else {
-      await fetch(`http://localhost:5000/order/${id}`, {
+      await fetch(`https://valiga-hardware.herokuapp.com/order/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())

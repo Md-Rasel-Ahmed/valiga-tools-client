@@ -23,7 +23,7 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((result) => (imgStored = result.data.url));
 
-    fetch("http://localhost:5000/", {
+    fetch("https://valiga-hardware.herokuapp.com/", {
       method: "POST",
       headers: {
         "content-type": "application/json",

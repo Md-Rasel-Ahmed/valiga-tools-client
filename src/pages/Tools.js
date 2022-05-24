@@ -8,7 +8,7 @@ const Tools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/")
+    fetch("https://valiga-hardware.herokuapp.com/")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);

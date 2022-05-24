@@ -17,9 +17,9 @@ const MyOrder = () => {
     data: myOrder,
     refetch,
   } = useQuery("order", () =>
-    fetch(`http://localhost:5000/order?email=${user.email}`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `https://valiga-hardware.herokuapp.com/order?email=${user.email}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -27,7 +27,7 @@ const MyOrder = () => {
   }
 
   function fetching(id) {
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://valiga-hardware.herokuapp.com/order/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -56,7 +56,7 @@ const Singup = () => {
         phoneNumber: data.phone,
       });
       await sendEmailVerification(data.email);
-      fetch("http://localhost:5000/user", {
+      fetch("https://valiga-hardware.herokuapp.com/user", {
         method: "PUT",
         headers: {
           "content-type": "application/json",

@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 const Review = () => {
   const [allReviews, setAllReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://valiga-hardware.herokuapp.com/review")
       .then((res) => res.json())
       .then((data) => setAllReviews(data));
   }, []);

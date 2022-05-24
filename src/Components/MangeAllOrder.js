@@ -9,7 +9,9 @@ const MangeAllOrder = () => {
     data: orders,
     refetch,
   } = useQuery("order", () =>
-    fetch(`http://localhost:5000/allOrder`).then((res) => res.json())
+    fetch(`https://valiga-hardware.herokuapp.com/allOrder`).then((res) =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;

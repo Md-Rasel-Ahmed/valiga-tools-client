@@ -8,7 +8,9 @@ const AllUsers = () => {
   // const [users, setUsers] = useState([]);
   const [currentUser] = useAuthState(auth);
   const { isLoading, error, data, refetch } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user`).then((res) => res.json())
+    fetch(`https://valiga-hardware.herokuapp.com/user`).then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -16,7 +18,7 @@ const AllUsers = () => {
   }
   // handle make Admin
   const handleMakeAdmin = (email) => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://valiga-hardware.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
     })
       .then((res) => res.json())

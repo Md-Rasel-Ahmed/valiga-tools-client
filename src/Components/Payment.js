@@ -14,7 +14,7 @@ const Payment = () => {
   // console.log(id);
   const [item, setItem] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/")
+    fetch("https://valiga-hardware.herokuapp.com/")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

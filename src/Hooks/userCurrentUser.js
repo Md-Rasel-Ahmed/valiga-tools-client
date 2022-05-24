@@ -6,7 +6,7 @@ function useCurrentUser() {
   const [user, loading] = useAuthState(auth);
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/user")
+    fetch("https://valiga-hardware.herokuapp.com/user")
       .then((res) => res.json())
       .then((data) => {
         const currentUser = data.find((u) => u.email === user.email);
