@@ -22,6 +22,7 @@ import AllUsers from "./Components/AllUser";
 import Blog from "./pages/Blog";
 import Portfolio from "./pages/Portfolio";
 import NotFound from "./Components/NotFound";
+import ManageProduct from "./Components/ManageProduct";
 
 function App() {
   return (
@@ -97,6 +98,14 @@ function App() {
             element={
               <ReuirAdmin>
                 <AllUsers></AllUsers>
+              </ReuirAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageproduct"
+            element={
+              <ReuirAdmin>
+                <ManageProduct></ManageProduct>
               </ReuirAdmin>
             }
           ></Route>

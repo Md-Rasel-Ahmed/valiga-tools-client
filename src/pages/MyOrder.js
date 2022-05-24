@@ -37,16 +37,16 @@ const MyOrder = () => {
       });
   }
 
-  const removeOrder = (id) => {
-    // console.log(id);
-    let deleteItem = myOrder?.find((item) => item._id === id);
-    if (deleteItem.paid === true) {
-      fetching(id);
-      // refetch();
-    } else {
-      fetching(id);
-    }
-  };
+  // const removeOrder = (id) => {
+  //   // console.log(id);
+  //   let deleteItem = myOrder?.find((item) => item._id === id);
+  //   if (deleteItem.paid === true) {
+  //     fetching(id);
+  //     // refetch();
+  //   } else {
+  //     fetching(id);
+  //   }
+  // };
   //delete item using modal dialog
   const handleDeleteWithConfirmation = (id) => {
     // console.log(id);
