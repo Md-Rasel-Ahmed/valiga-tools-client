@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDHTfYI4FSRVhzFHgExCD6v4aRJ7Tm5vbA",
-  authDomain: "valiga-hardware.firebaseapp.com",
-  projectId: "valiga-hardware",
-  storageBucket: "valiga-hardware.appspot.com",
-  messagingSenderId: "1060092597434",
-  appId: "1:1060092597434:web:727c1f01e3909d0db49e83",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
