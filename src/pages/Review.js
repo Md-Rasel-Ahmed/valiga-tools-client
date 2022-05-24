@@ -10,11 +10,10 @@ const Review = () => {
   }, []);
   return (
     <div className="p-5">
-      <h2 className="text-2xl font-bold text-primary py-2 text-center">
+      <h2 className="border-y-2 border-indigo-500  w-60 text-center m-auto  text-2xl font-bold text-primary py-2">
         Customers Review
       </h2>
 
-      <hr />
       {allReviews?.map((review) => {
         return (
           <div class="lg:w-1/2 sm:w-4/5 md:w-4/5 m-auto p-5 mb-5 card  bg-base-100 shadow-xl">

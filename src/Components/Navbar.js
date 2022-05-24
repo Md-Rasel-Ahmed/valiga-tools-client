@@ -6,7 +6,6 @@ import logo from "../../src/images/logo.svg";
 import auth from "../firebase.init";
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
   return (
     <div>
       <div class="navbar bg-neutral text-neutral-content">

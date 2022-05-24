@@ -3,8 +3,9 @@ import React from "react";
 const Contact = () => {
   return (
     <>
-      <h1 className="text-center text-xl font-bold py-5">Need Help?</h1>
-      <hr />
+      <h1 className="border-y-2 border-indigo-500  w-40 text-center m-auto  text-2xl font-bold text-primary py-2">
+        Need Help?
+      </h1>
       <div className="grid lg:grid-cols-4 p-5 sm:grid-cols-1 justify-items-center">
         <div>
           <h1 className="flex gap-2 text-xl font-bold text-accent py-5">

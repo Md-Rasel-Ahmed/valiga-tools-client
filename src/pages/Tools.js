@@ -22,7 +22,9 @@ const Tools = () => {
   console.log(tools);
   return (
     <>
-      <h2 className="text-primary text-center text-2xl py-2">OUR TOOLS</h2>
+      <h2 className="border-y-2 border-indigo-500  w-40 text-center m-auto  text-2xl font-bold text-primary py-2 ">
+        OUR TOOLS
+      </h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 px-5">
         {tools?.map((tool) => {
           return (

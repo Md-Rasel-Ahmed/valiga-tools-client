@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -8,6 +11,8 @@ import auth from "../firebase.init";
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -17,7 +22,7 @@ const Login = () => {
     }
   }, [error]);
   let from = location.state?.from?.pathname || "/";
-  if (user) {
+  if (user || gUser) {
     navigate(from, { replace: true });
   }
 
@@ -28,6 +33,7 @@ const Login = () => {
       e.target.password.value
     );
   };
+
   return (
     <div className="py-5 flex justify-center">
       <div>
@@ -63,7 +69,10 @@ const Login = () => {
           </p>
           <div class="divider">OR</div>
         </form>
-        <button className="btn btn-outline btn-accent w-80">
+        <button
+          onClick={() => signInWithGoogle()}
+          className="btn btn-outline btn-accent w-80"
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>

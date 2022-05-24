@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../firebase.init";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSendEmailVerification,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 
@@ -12,7 +15,9 @@ const Singup = () => {
   const [passwordVal, setPasswordVal] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [updateProfile, updating, upError] = useUpdateProfile(auth);
+  const [onlyGuser, setOnlyGuser] = useState(null);
   const [sendEmailVerification] = useSendEmailVerification(auth);
   const {
     register,
@@ -21,11 +26,32 @@ const Singup = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
-  if (user) {
-    navigate("/");
-  }
+
+  useEffect(() => {
+    if (gUser) {
+      fetch("https://valiga-hardware.herokuapp.com/user", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name: gUser?.user?.displayName,
+          email: gUser?.user?.email,
+          image: gUser?.user?.photoURL,
+          phone: gUser?.user?.phoneNumber,
+          role: "user",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+    if (user || gUser) {
+      navigate("/");
+    }
+  }, [gUser, user]);
   const imgKey = "adbb7d7935ea9c40a8b8dfa8127a1bdc";
 
+  // handle submit
   const onSubmit = async (data) => {
     console.log(data);
     const image = data.file[0];
@@ -34,11 +60,11 @@ const Singup = () => {
     formData.append("image", image);
 
     if (data.password !== data.confirmPassword) {
-      alert("password did not match");
+      toast.error("Confirm password did not match");
       return;
     }
     if (error) {
-      alert(error.message);
+      toast.error(error.message);
       return;
     }
     if (!error) {
@@ -72,10 +98,13 @@ const Singup = () => {
         .then((res) => res.json())
         .then((data) => console.log(data));
     }
-
-    // data.target.reset();
   };
-  // console.log(errors);
+
+  // handle goole singup
+  const handleGooleSining = async () => {
+    await signInWithGoogle();
+  };
+
   return (
     <div className="py-5 flex justify-center">
       <div>
@@ -174,7 +203,10 @@ const Singup = () => {
           </p>
           <div class="divider">OR</div>
         </form>
-        <button className="btn btn-outline btn-accent w-80">
+        <button
+          onClick={handleGooleSining}
+          className="btn btn-outline btn-accent w-80"
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>
