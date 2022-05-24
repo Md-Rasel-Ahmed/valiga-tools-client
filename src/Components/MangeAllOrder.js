@@ -16,6 +16,14 @@ const MangeAllOrder = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+  const handleShipped = (id) => {
+    fetch(`https://valiga-hardware.herokuapp.com/allOrder/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => refetch());
+  };
   return (
     <div>
       <h2>Mange all orders</h2>
@@ -25,11 +33,6 @@ const MangeAllOrder = () => {
             {/* <!-- head --> */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" class="checkbox" />
-                  </label>
-                </th>
                 <th>Email</th>
                 <th>Item Name</th>
                 <th>Item Price</th>
@@ -44,11 +47,6 @@ const MangeAllOrder = () => {
               {orders?.map((item) => {
                 return (
                   <tr>
-                    <th>
-                      <label>
-                        <input type="checkbox" class="checkbox" />
-                      </label>
-                    </th>
                     <td>
                       <div class="font-bold">{item.email}</div>
                       {/* <div class="text-sm opacity-50">United States</div> */}
@@ -58,19 +56,17 @@ const MangeAllOrder = () => {
 
                     <td>{item.quantity}</td>
                     <td>
-                      {/* <button
-                          class={
-                            item.paid ? "btn btn-success" : "btn btn-primary"
-                          }
+                      {item.paid ? (
+                        <button
+                          disabled={item.status}
+                          onClick={() => handleShipped(item._id)}
+                          className="btn btn-accent"
                         >
-                          {item.paid ? (
-                            <button className="btn btn-success">Paid</button>
-                          ) : (
-                            <Link to={`/dasboard/payment/${item._id}`}>
-                              Pay
-                            </Link>
-                          )}
-                        </button> */}
+                          {item.status ? "Shipped" : " Panding"}
+                        </button>
+                      ) : (
+                        <button className="btn btn-warning">Unpaid</button>
+                      )}
                     </td>
                   </tr>
                 );
