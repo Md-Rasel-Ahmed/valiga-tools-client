@@ -20,10 +20,27 @@ const Dashboard = () => {
   // console.log(users);
   return (
     <div>
-      <label for="my-drawer-2" className="xdrawer-button lg:hidde">
-        <div>Open</div>
+      {/* <label className="xdrawer-button lg:hidde">Open drawer</label> */}
+      <label
+        for="my-drawer-2"
+        tabindex="0"
+        class="btn btn-ghost btn-circle lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h7"
+          />
+        </svg>
       </label>
-
       <div class="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col items-center ">

@@ -10,6 +10,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
+import useUserInsert from "../Hooks/useUserInsert";
 
 const Singup = () => {
   const [passwordVal, setPasswordVal] = useState("");
@@ -26,7 +27,6 @@ const Singup = () => {
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
-
   useEffect(() => {
     if (gUser) {
       fetch("https://valiga-hardware.herokuapp.com/user", {

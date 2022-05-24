@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import ReactStars from "react-rating-stars-component";
 import auth from "../firebase.init";
 import { format } from "date-fns";
+import { toast } from "react-toastify";
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);
@@ -30,7 +31,7 @@ const AddReview = () => {
         }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => toast.success("Review successfull"));
     }
   };
   const ratingChanged = (e) => {

@@ -17,7 +17,28 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (error) {
+    if (gUser) {
+      fetch("https://valiga-hardware.herokuapp.com/user", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name: gUser?.user?.displayName,
+          email: gUser?.user?.email,
+          image: gUser?.user?.photoURL,
+          phone: gUser?.user?.phoneNumber,
+          role: "user",
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+    if (user || gUser) {
+      navigate("/");
+    }
+
+    if ((error, gUser, user)) {
       toast.error(error.message.slice(22, -2));
     }
   }, [error]);
@@ -53,11 +74,11 @@ const Login = () => {
             class="input input-bordered mt-3 block  w-80"
           />
 
-          <p>
+          {/* <p>
             <Link className="text-primary" to="/singup">
               Forget password?
             </Link>
-          </p>
+          </p> */}
           <button type="submit" class="btn btn-dark btn-block mt-3 w-80">
             LOGIN
           </button>

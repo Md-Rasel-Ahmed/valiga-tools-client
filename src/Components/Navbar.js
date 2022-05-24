@@ -35,7 +35,7 @@ const Navbar = () => {
                 <Link to="/blog">Blogs</Link>
               </li>
               <li>
-                <a>Reviews</a>
+                <Link to="/portfolio">Portfolio</Link>
               </li>
 
               {!user?.email && (
@@ -55,7 +55,7 @@ const Navbar = () => {
               <Link to="/blog">Blogs</Link>
             </li>
             <li>
-              <a>Reviews</a>
+              <Link to="/portfolio">Portfolio</Link>
             </li>
 
             {!user?.email && (

@@ -20,6 +20,8 @@ import ReuirAdmin from "./Components/ReuirAdmin";
 import AddProduct from "./Components/AddProduct";
 import AllUsers from "./Components/AllUser";
 import Blog from "./pages/Blog";
+import Portfolio from "./pages/Portfolio";
+import NotFound from "./Components/NotFound";
 
 function App() {
   return (
@@ -108,6 +110,10 @@ function App() {
         </Route>
         {/* blog route */}
         <Route path="/blog" element={<Blog></Blog>}></Route>
+        {/* portfolio route */}
+        <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
+        {/* Not founded route */}
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />
