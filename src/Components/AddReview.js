@@ -44,7 +44,7 @@ const AddReview = () => {
       <form onSubmit={handleReview}>
         <textarea
           required
-          class="input input-bordered mt-3 block w-80"
+          className="input input-bordered mt-3 block w-80"
           name="review"
           id=""
           cols="50"
@@ -61,7 +61,7 @@ const AddReview = () => {
           />
         </div>
         {/* <input type="text" name="name" placeholder="" /> */}
-        <button type="submit" class="btn btn-primary mt-2">
+        <button type="submit" className="btn btn-primary mt-2">
           Save
         </button>
       </form>

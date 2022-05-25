@@ -28,8 +28,8 @@ const ManageProduct = () => {
       <h2>Manage product</h2>
       <div>
         <h2>All Users {data.length}</h2>
-        <div class="overflow-x-auto w-full">
-          <table class="table w-full">
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr>
@@ -44,10 +44,10 @@ const ManageProduct = () => {
               {/* <!-- row 1 --> */}
               {data?.map((product) => {
                 return (
-                  <tr>
+                  <tr key={product._id}>
                     <td>
-                      <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                           <img
                             src={product.img}
                             alt="Avatar Tailwind CSS Component"
@@ -65,19 +65,19 @@ const ManageProduct = () => {
                       <label
                         for="deleteProductModal"
                         onClick={() => setStoreId(product._id)}
-                        class="btn modal-button btn-error"
+                        className="btn modal-button btn-error"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6"
+                          className="h-6 w-6"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          stroke-width="2"
+                          strokeWidth="2"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                           />
                         </svg>
@@ -86,15 +86,15 @@ const ManageProduct = () => {
                       {/* <button>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6"
+                          className="h-6 w-6"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          stroke-width="2"
+                          strokeWidth="2"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                           />
                         </svg>
@@ -103,7 +103,7 @@ const ManageProduct = () => {
                     {/* <th>
                       <button
                         onClick={() => handleMakeAdmin(user.email)}
-                        class="btn btn-ghost btn-xs"
+                        className="btn btn-ghost btn-xs"
                       >
                         {user.role === "user" && " Make Admin"}
                       </button>
@@ -115,25 +115,25 @@ const ManageProduct = () => {
           </table>
         </div>
       </div>
-      <input type="checkbox" id="deleteProductModal" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">
+      <input type="checkbox" id="deleteProductModal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">
             Are you sure you want to delete this item?
           </h3>
 
-          <div class="modal-action">
+          <div className="modal-action">
             <label
               // onClick={handleDeleteWithConfirmation}
               for="deleteProductModal"
-              class="btn btn-accent"
+              className="btn btn-accent"
             >
               No
             </label>
             <label
               onClick={() => handleDeleteWithConfirmation(storeId)}
               for="deleteProductModal"
-              class="btn btn-error"
+              className="btn btn-error"
             >
               Yes
             </label>

@@ -4,15 +4,15 @@ const Blog = () => {
   return (
     <div className=" p-5">
       <h1 className="text-2xl font-bold text-primary py-2 text-center">Blog</h1>
-      <div class="collapse">
-        <input type="checkbox" class="peer" />
-        <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse">
+        <input type="checkbox" className="peer" />
+        <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <h1 className="text-2xl font-bold">
             {" "}
             How will you improve the performance of a React Application?
           </h1>
         </div>
-        <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+        <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <p>1.Keeping component state local where necessary.</p>
           <p>2. Memoizing React components to prevent unnecessary re-renders</p>
           <p>3.Code-splitting in React using dynamix import</p>
@@ -21,16 +21,16 @@ const Blog = () => {
         </div>
       </div>
 
-      <div class="collapse mt-5">
-        <input type="checkbox" class="peer" />
-        <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse mt-5">
+        <input type="checkbox" className="peer" />
+        <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <h1 className="text-2xl font-bold">
             {" "}
             What are the different ways to manage a state in a React
             application?
           </h1>
         </div>
-        <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+        <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <p>
             <span className="font-bold text-xl">Local State </span>
             Local state is data we manage in on or another component. Local
@@ -53,15 +53,15 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div class="collapse mt-5">
-        <input type="checkbox" class="peer" />
-        <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse mt-5">
+        <input type="checkbox" className="peer" />
+        <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <h1 className="text-2xl font-bold">
             {" "}
             What is a unit test? Why should write unit tests?
           </h1>
         </div>
-        <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+        <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <p>
             The main objective of unit testing is to isolate written code to
             test and determine if it works as intended. Unit testing is an
@@ -72,15 +72,15 @@ const Blog = () => {
         </div>
       </div>
 
-      <div class="collapse mt-5">
-        <input type="checkbox" class="peer" />
-        <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse mt-5">
+        <input type="checkbox" className="peer" />
+        <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <h1 className="text-2xl font-bold">
             {" "}
             How does prototypical inheritance work?
           </h1>
         </div>
-        <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+        <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <p>
             Simply put prototypical inheritance refers to othe ability to
             accesss object properties from another object.We use a javascript
@@ -90,9 +90,9 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div class="collapse mt-5">
-        <input type="checkbox" class="peer" />
-        <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse mt-5">
+        <input type="checkbox" className="peer" />
+        <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <h1 className="text-2xl font-bold">
             {" "}
             You have an array of products. Each product has a name, price,
@@ -100,7 +100,7 @@ const Blog = () => {
             by name?
           </h1>
         </div>
-        <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+        <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
           <p>
             <img src={img} alt="" />
           </p>

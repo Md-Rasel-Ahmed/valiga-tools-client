@@ -3,16 +3,27 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import auth from "../firebase.init";
 import Loading from "../Components/Loading";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 const AllUsers = () => {
   // const [users, setUsers] = useState([]);
   const [currentUser] = useAuthState(auth);
+  const navigate = useNavigate();
   const { isLoading, error, data, refetch } = useQuery("user", () =>
-    fetch(`https://valiga-hardware.herokuapp.com/user`).then((res) =>
-      res.json()
-    )
+    fetch(`https://valiga-hardware.herokuapp.com/user`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
-
+  console.log(data?.message);
+  if (data?.message === "forbidden") {
+    signOut(auth);
+    navigate("/login");
+    window.location.reload();
+    return;
+  }
   if (isLoading) {
     return <Loading />;
   }
@@ -28,8 +39,8 @@ const AllUsers = () => {
   return (
     <div>
       <h2>All Users {data.length}</h2>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>
@@ -43,11 +54,11 @@ const AllUsers = () => {
             {/* <!-- row 1 --> */}
             {data?.map((user) => {
               return (
-                <tr>
+                <tr key={user._id}>
                   <td>
-                    <div class="flex items-center space-x-3">
-                      <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                    <div className="flex items-center space-x-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                           <img
                             src={user.image}
                             alt="Avatar Tailwind CSS Component"
@@ -55,10 +66,10 @@ const AllUsers = () => {
                         </div>
                       </div>
                       <div>
-                        <div class="font-bold">{user.name}</div>
+                        <div className="font-bold">{user.name}</div>
                         {user.email === currentUser.email &&
                           user.role === "admin" && (
-                            <button class="btn btn-xs">Me</button>
+                            <button className="btn btn-xs">Me</button>
                           )}
                       </div>
                     </div>
@@ -66,7 +77,7 @@ const AllUsers = () => {
                   <td>{user.email}</td>
                   <td>
                     <button
-                      class={
+                      className={
                         user.role === "admin" ? "text-accent" : "text-primary"
                       }
                     >
@@ -76,7 +87,7 @@ const AllUsers = () => {
                   <th>
                     <button
                       onClick={() => handleMakeAdmin(user.email)}
-                      class="btn btn-ghost btn-xs"
+                      className="btn btn-ghost btn-xs"
                     >
                       {user.role === "user" && " Make Admin"}
                     </button>

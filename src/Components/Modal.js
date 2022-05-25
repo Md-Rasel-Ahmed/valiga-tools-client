@@ -7,29 +7,29 @@ const Modal = ({ id }) => {
   return (
     <div>
       {/* <!-- Put this part before </body> tag --> */}
-      <input type="checkbox" id="my-modal" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box">
+      <input type="checkbox" id="my-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
           c
-          <h3 class="font-bold text-lg">
+          <h3 className="font-bold text-lg">
             Congratulations random Interner user!
           </h3>
-          <p class="py-4">
+          <p className="py-4">
             You've been selected for a chance to get one year of subscription to
             use Wikipedia for free!
           </p>
-          <div class="modal-action">
+          <div className="modal-action">
             <label
               // onClick={handleDeleteWithConfirmation}
               for="my-modal"
-              class="btn"
+              className="btn"
             >
               No
             </label>
             <label
               onClick={() => handleDeleteWithConfirmation(id)}
               for="my-modal"
-              class="btn"
+              className="btn"
             >
               Yes
             </label>

@@ -10,8 +10,8 @@ const MyProfiile = () => {
   return (
     <div className="py-5 flex justify-center gap-5">
       <div>
-        <div class="avatar">
-          <div class="w-24 rounded-full">
+        <div className="avatar">
+          <div className="w-24 rounded-full">
             <img src={currentUser?.image} />
           </div>
         </div>

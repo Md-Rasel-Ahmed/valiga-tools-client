@@ -114,7 +114,7 @@ const Singup = () => {
             {...register("fullName", { required: true, minLength: 3 })}
             type="text"
             placeholder="Full Name"
-            class={`input input-bordered mt-3 block w-80 ${
+            className={`input input-bordered mt-3 block w-80 ${
               errors.fullName?.type && "border-red-400"
             }`}
           />
@@ -134,7 +134,7 @@ const Singup = () => {
             })}
             // type="email"
             placeholder="email"
-            class={`input input-bordered mt-3 block w-80 ${
+            className={`input input-bordered mt-3 block w-80 ${
               errors.email?.type && "border-red-400"
             }`}
           />
@@ -152,7 +152,7 @@ const Singup = () => {
             type="password"
             placeholder="Password"
             onBlur={(e) => setPasswordVal(e.target.value)}
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
           {errors.password?.type === "required" && (
             <small className="text-error mt-1">Password is required</small>
@@ -169,7 +169,7 @@ const Singup = () => {
             })}
             type="password"
             placeholder="Confirm Password"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
           {errors.confirmPassword?.type === "required" && (
             <small className="text-error mt-1">
@@ -185,14 +185,14 @@ const Singup = () => {
             {...register("phone", { required: true })}
             type="phone"
             placeholder="Phone Number"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
           <input
             {...register("file", { required: true })}
             type="file"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
-          <button type="submit" class="btn btn-dark btn-block mt-3 w-80">
+          <button type="submit" className="btn btn-dark btn-block mt-3 w-80">
             SINGUP
           </button>
           <p>
@@ -201,7 +201,7 @@ const Singup = () => {
               Login
             </Link>
           </p>
-          <div class="divider">OR</div>
+          <div className="divider">OR</div>
         </form>
         <button
           onClick={handleGooleSining}

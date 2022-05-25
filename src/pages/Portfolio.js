@@ -27,7 +27,7 @@ const Portfolio = () => {
         <p>
           {" "}
           <a
-            class="btn btn-link"
+            className="btn btn-link"
             href="https://condescending-kare-7080dd.netlify.app/"
           >
             Bootstrap project with responsive ,
@@ -35,7 +35,7 @@ const Portfolio = () => {
         </p>
         <p>
           <a
-            class="btn btn-link"
+            className="btn btn-link"
             href="https://cranky-hoover-510f35.netlify.app/"
           >
             Boostrap ans javascript with responsive ,
@@ -43,14 +43,17 @@ const Portfolio = () => {
         </p>
         <p>
           <a
-            class="btn btn-link"
+            className="btn btn-link"
             href="https://red-onion-firebase-9118c.web.app/menus/breakfast"
           >
             React with firebase project
           </a>
         </p>
         <p>
-          <a class="btn btn-link" href="https://stored-bike-warehous.web.app/">
+          <a
+            className="btn btn-link"
+            href="https://stored-bike-warehous.web.app/"
+          >
             React,node,express,mongodb,firebase,mui
           </a>
         </p>

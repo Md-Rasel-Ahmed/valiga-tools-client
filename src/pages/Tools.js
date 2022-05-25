@@ -26,26 +26,26 @@ const Tools = () => {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 px-5">
           {tools?.map((tool) => {
             return (
-              <div class="card w-46 bg-base-100 shadow-xl">
+              <div key={tool._id} className="card w-46 bg-base-100 shadow-xl">
                 <figure>
                   <img width="150" height="100" src={tool.img} alt="Shoes" />
                 </figure>
-                <div class="card-body">
-                  <h2 class="card-title">{tool.name}</h2>
+                <div className="card-body">
+                  <h2 className="card-title">{tool.name}</h2>
 
                   <p>{tool.description}</p>
-                  <h2 class="card-title text-primary text-bold">
+                  <h2 className="card-title text-primary text-bold">
                     Minimum orders quantity :{tool.minimumOrder}
                   </h2>
-                  <h2 class="card-title text-primary text-bold">
+                  <h2 className="card-title text-primary text-bold">
                     Available quantity :{tool.availableQuentity}
                   </h2>
-                  <h2 class="card-title text-accent text-bold">
+                  <h2 className="card-title text-accent text-bold">
                     Price :${tool.price}
                   </h2>
-                  <div class="card-actions justify-end">
+                  <div className="card-actions justify-end">
                     <Link
-                      class="btn btn-primary btn-block"
+                      className="btn btn-primary btn-block"
                       to={`/purchase/${tool._id}`}
                     >
                       Buy Now

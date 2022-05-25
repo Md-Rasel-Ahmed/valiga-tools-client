@@ -28,8 +28,8 @@ const MangeAllOrder = () => {
     <div>
       <h2>Mange all orders</h2>
       <div>
-        <div class="overflow-x-auto w-full">
-          <table class="table w-full ">
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full ">
             {/* <!-- head --> */}
             <thead>
               <tr>
@@ -46,10 +46,10 @@ const MangeAllOrder = () => {
               {/* <!-- row 1 --> */}
               {orders?.map((item) => {
                 return (
-                  <tr>
+                  <tr key={item._id}>
                     <td>
-                      <div class="font-bold">{item.email}</div>
-                      {/* <div class="text-sm opacity-50">United States</div> */}
+                      <div className="font-bold">{item.email}</div>
+                      {/* <div className="text-sm opacity-50">United States</div> */}
                     </td>
                     <td>{item.name}</td>
                     <td>${item.totalPrice}</td>
@@ -78,25 +78,25 @@ const MangeAllOrder = () => {
 
         {/* modal for delete confirmation  */}
         {/* <!-- Put this part before </body> tag --> */}
-        <input type="checkbox" id="my-modal" class="modal-toggle" />
-        <div class="modal">
-          <div class="modal-box">
-            <h3 class="font-bold text-lg">
+        <input type="checkbox" id="my-modal" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">
               Are you sure you want to delete this item?
             </h3>
 
-            <div class="modal-action">
+            <div className="modal-action">
               <label
                 // onClick={handleDeleteWithConfirmation}
                 for="my-modal"
-                class="btn btn-accent"
+                className="btn btn-accent"
               >
                 No
               </label>
               <label
                 // onClick={() => handleDeleteWithConfirmation(storeId)}
                 for="my-modal"
-                class="btn btn-error"
+                className="btn btn-error"
               >
                 Yes
               </label>

@@ -46,6 +46,19 @@ const Login = () => {
   if (user || gUser) {
     navigate(from, { replace: true });
   }
+  // access token
+  async function accessToken(email) {
+    await fetch("https://valiga-hardware.herokuapp.com/login", {
+      method: "POST",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify({ email: email }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("accessToken", data.accessToken);
+      });
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -54,21 +67,7 @@ const Login = () => {
       e.target.password.value
     );
 
-    await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: { "content-Type": "application/json" },
-      body: JSON.stringify({ email: e.target.email.value }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("accessToken", data.accessToken);
-      });
-
-    // const { data } = await axios.post("http://localhost:5000/login", {
-    //   email: e.target.email.value,
-    // });
-    // console.log(data);
+    accessToken(e.target.value);
   };
 
   return (
@@ -80,14 +79,14 @@ const Login = () => {
             type="email"
             name="email"
             placeholder="Email"
-            class="input input-bordered mt-3 block w-80 "
+            className="input input-bordered mt-3 block w-80 "
           />
 
           <input
             type="password"
             name="password"
             placeholder="Password"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
 
           {/* <p>
@@ -95,7 +94,7 @@ const Login = () => {
               Forget password?
             </Link>
           </p> */}
-          <button type="submit" class="btn btn-dark btn-block mt-3 w-80">
+          <button type="submit" className="btn btn-dark btn-block mt-3 w-80">
             LOGIN
           </button>
           <p>
@@ -104,10 +103,13 @@ const Login = () => {
               Create new account
             </Link>
           </p>
-          <div class="divider">OR</div>
+          <div className="divider">OR</div>
         </form>
         <button
-          onClick={() => signInWithGoogle()}
+          onClick={async () => {
+            await signInWithGoogle();
+            accessToken(gUser?.user?.email);
+          }}
           className="btn btn-outline btn-accent w-80"
         >
           CONTINUE WITH GOOGLE

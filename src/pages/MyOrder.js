@@ -54,8 +54,8 @@ const MyOrder = () => {
   return (
     <div>
       {myOrder?.length > 0 ? (
-        <div class="overflow-x-auto mt-5">
-          <table class="able table-compact w-full ">
+        <div className="overflow-x-auto mt-5">
+          <table className="able table-compact w-full ">
             {/* <!-- head --> */}
             <thead>
               <tr>
@@ -70,10 +70,10 @@ const MyOrder = () => {
             <tbody>
               {myOrder?.map((item) => {
                 return (
-                  <tr>
+                  <tr key={item._id}>
                     <td>
-                      <div class="font-bold">{item.email}</div>
-                      {/* <div class="text-sm opacity-50">United States</div> */}
+                      <div className="font-bold">{item.email}</div>
+                      {/* <div className="text-sm opacity-50">United States</div> */}
                     </td>
                     <td>{item.name}</td>
                     <td>${item.totalPrice}</td>
@@ -81,7 +81,7 @@ const MyOrder = () => {
                     <td>{item.quantity}</td>
                     <td>
                       <button
-                        class={
+                        className={
                           item.paid ? "btn btn-success" : "btn btn-primary"
                         }
                       >
@@ -99,7 +99,7 @@ const MyOrder = () => {
                         <label
                           for="my-modal"
                           onClick={() => setStoreId(item._id)}
-                          class="btn modal-button btn-error"
+                          className="btn modal-button btn-error"
                         >
                           Cancle
                         </label>
@@ -116,25 +116,25 @@ const MyOrder = () => {
       )}
       {/* modal for delete confirmation  */}
       {/* <!-- Put this part before </body> tag --> */}
-      <input type="checkbox" id="my-modal" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">
+      <input type="checkbox" id="my-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">
             Are you sure you want to delete this item?
           </h3>
 
-          <div class="modal-action">
+          <div className="modal-action">
             <label
               // onClick={handleDeleteWithConfirmation}
               for="my-modal"
-              class="btn btn-accent"
+              className="btn btn-accent"
             >
               No
             </label>
             <label
               onClick={() => handleDeleteWithConfirmation(storeId)}
               for="my-modal"
-              class="btn btn-error"
+              className="btn btn-error"
             >
               Yes
             </label>

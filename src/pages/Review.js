@@ -16,10 +16,13 @@ const Review = () => {
 
       {allReviews?.map((review) => {
         return (
-          <div class="lg:w-1/2 sm:w-4/5 md:w-4/5 m-auto p-5 mb-5 card  bg-base-100 shadow-xl">
+          <div
+            key={review._id}
+            className="lg:w-1/2 sm:w-4/5 md:w-4/5 m-auto p-5 mb-5 card  bg-base-100 shadow-xl"
+          >
             <div className="flex gap-2">
-              <div class="avatar">
-                <div class="w-24 rounded-full">
+              <div className="avatar">
+                <div className="w-24 rounded-full">
                   <img src={review.img} />
                 </div>
               </div>

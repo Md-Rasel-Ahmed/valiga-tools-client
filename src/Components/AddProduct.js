@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 const AddProduct = () => {
   const {
     register,
@@ -38,7 +39,7 @@ const AddProduct = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => toast.success("Product add successFul"));
   };
 
   return (
@@ -50,7 +51,7 @@ const AddProduct = () => {
             {...register("ProductName", { required: true, minLength: 3 })}
             type="text"
             placeholder="Product Name"
-            class={`input input-bordered mt-3 block w-80 ${
+            className={`input input-bordered mt-3 block w-80 ${
               errors.ProductName?.type && "border-red-400"
             }`}
           />
@@ -69,7 +70,7 @@ const AddProduct = () => {
             })}
             // type="email"
             placeholder="Product Description"
-            class={`input input-bordered mt-3 block w-80 ${
+            className={`input input-bordered mt-3 block w-80 ${
               errors.productDescription?.type && "border-red-400"
             }`}
             id=""
@@ -89,7 +90,7 @@ const AddProduct = () => {
             type="number"
             min="0"
             placeholder="Minimum orders quantity"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
           {errors.minimumOrder?.type === "required" && (
             <small className="text-error mt-1">
@@ -104,7 +105,7 @@ const AddProduct = () => {
             type="number"
             min="0"
             placeholder="Available quantity"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
           {errors.availableQuantity?.type === "required" && (
             <small className="text-error mt-1">
@@ -117,7 +118,7 @@ const AddProduct = () => {
             type="number"
             min="0"
             placeholder="Product Price"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
           {errors.price?.type === "required" && (
             <small className="text-error mt-1">Product Price is required</small>
@@ -126,9 +127,9 @@ const AddProduct = () => {
           <input
             {...register("file", { required: true })}
             type="file"
-            class="input input-bordered mt-3 block  w-80"
+            className="input input-bordered mt-3 block  w-80"
           />
-          <button type="submit" class="btn btn-dark btn-block mt-3 w-80">
+          <button type="submit" className="btn btn-dark btn-block mt-3 w-80">
             Add Product
           </button>
         </form>

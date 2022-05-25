@@ -44,14 +44,14 @@ const EditProfile = () => {
           name="name"
           onChange={(e) => setName(e.target.value)}
           value={name}
-          class="input input-bordered mt-3 block  w-80"
+          className="input input-bordered mt-3 block  w-80"
         />
         <input
           type="email"
           name="email"
           value={currentUser?.email}
           disabled
-          class="input input-bordered mt-3 block  w-80"
+          className="input input-bordered mt-3 block  w-80"
         />
         <p>Phone Number</p>
         <input
@@ -59,7 +59,7 @@ const EditProfile = () => {
           name="number"
           onChange={(e) => setPhone(e.target.value)}
           value={phone}
-          class="input input-bordered mt-3 block  w-80"
+          className="input input-bordered mt-3 block  w-80"
         />
         <p>Select your Education level</p>
         <textarea
@@ -69,7 +69,7 @@ const EditProfile = () => {
           type="text"
           name="School or collage "
           placeholder="Institution Name"
-          class="input input-bordered mt-3 block  w-80"
+          className="input input-bordered mt-3 block  w-80"
         ></textarea>
         <p>Location</p>
         <input
@@ -78,7 +78,7 @@ const EditProfile = () => {
           onChange={(e) => setLocation(e.target.value)}
           value={location}
           placeholder="location"
-          class="input input-bordered mt-3 block  w-80"
+          className="input input-bordered mt-3 block  w-80"
         />
         <p>Fb Profile Link </p>
         <input
@@ -87,11 +87,11 @@ const EditProfile = () => {
           onChange={(e) => setFbLink(e.target.value)}
           value={fbLink}
           placeholder="Fb Profile link"
-          class="input input-bordered mt-3 block  w-80"
+          className="input input-bordered mt-3 block  w-80"
         />
         <input />
 
-        <button type="submit" class="btn btn-dark btn-block mt-3 ">
+        <button type="submit" className="btn btn-dark btn-block mt-3 ">
           Save And Change
         </button>
       </form>

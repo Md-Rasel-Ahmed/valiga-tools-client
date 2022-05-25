@@ -83,7 +83,7 @@ const Purchase = () => {
               type="email"
               value={user?.email}
               disabled
-              class="input input-bordered mt-3 block w-100 "
+              className="input input-bordered mt-3 block w-100 "
             />
             <input
               required
@@ -91,7 +91,7 @@ const Purchase = () => {
               type="text"
               value={user?.displayName}
               disabled
-              class="input input-bordered mt-3 block w-100  "
+              className="input input-bordered mt-3 block w-100  "
             />
           </div>
           <h2 className="text-2xl font-bold text-primary py-2">
@@ -103,14 +103,14 @@ const Purchase = () => {
               Name="company"
               type="text"
               placeholder="Company (optional)"
-              class="input input-bordered mt-3 block w-100 "
+              className="input input-bordered mt-3 block w-100 "
             />
             <input
               required
               Name="city"
               type="text"
               placeholder="City"
-              class="input input-bordered mt-3 block w-100  "
+              className="input input-bordered mt-3 block w-100  "
             />
           </div>
           <div className="flex gap-2">
@@ -119,10 +119,10 @@ const Purchase = () => {
               Name="postal"
               type="number"
               placeholder="Postal code"
-              class="input input-bordered mt-3 block w-100 "
+              className="input input-bordered mt-3 block w-100 "
             />
             <select
-              class="input input-bordered mt-3 block w-48	 "
+              className="input input-bordered mt-3 block w-48	 "
               name="select"
               id=""
             >
@@ -135,7 +135,7 @@ const Purchase = () => {
             Name="phone"
             type="number"
             placeholder="Phone Number"
-            class="input input-bordered mt-3 block w-96 "
+            className="input input-bordered mt-3 block w-96 "
           />
           <button
             type="submit"
@@ -147,12 +147,12 @@ const Purchase = () => {
       </div>
       <div>
         <p>Your oredes</p>
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl">
           <figure>
             <img className="h-32" src={item?.img} alt="Shoes" />
           </figure>
-          <div class="card-body">
-            <h2 class="card-title">{item?.name}</h2>
+          <div className="card-body">
+            <h2 className="card-title">{item?.name}</h2>
             <p>{item?.description}</p>
             <h2 className="text-2xl font-bold">
               Quantity :{quantity || item?.minimumOrder}
@@ -168,9 +168,9 @@ const Purchase = () => {
                 type="number"
                 min="0"
                 placeholder="New quantity type..."
-                class="input input-bordered mt-3 block w-40 "
+                className="input input-bordered mt-3 block w-40 "
               />
-              <button type="submit" class="btn btn-dark  mt-3 w-40">
+              <button type="submit" className="btn btn-dark  mt-3 w-40">
                 Update Quantity
               </button>
             </form>
