@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../firebase.init";
 import useCurrentUser from "../Hooks/userCurrentUser";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const [currentUser] = useCurrentUser();
-
   const [name, setName] = useState(currentUser?.name);
   const [phone, setPhone] = useState(currentUser?.phone);
   const [location, setLocation] = useState("");
   const [fbLink, setFbLink] = useState("");
-  console.log(currentUser);
+
+  const navigate = useNavigate();
   // update user profiles
   const handleUpdateUserProfile = (e) => {
     e.preventDefault();
@@ -28,7 +28,10 @@ const EditProfile = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        toast.success("Profile update successful");
+        navigate("/dasboard/myprofile");
+      });
   };
 
   return (

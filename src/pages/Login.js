@@ -38,10 +38,10 @@ const Login = () => {
       navigate("/");
     }
 
-    if ((error, gUser, user)) {
+    if ((error, gError)) {
       toast.error(error.message.slice(22, -2));
     }
-  }, [error]);
+  }, [error, gUser, gError, user]);
   let from = location.state?.from?.pathname || "/";
   if (user || gUser) {
     navigate(from, { replace: true });

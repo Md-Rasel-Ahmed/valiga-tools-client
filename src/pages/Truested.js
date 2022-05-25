@@ -6,7 +6,6 @@ const Truested = () => {
       <h1 className="border-y-2 border-indigo-500  w-60 text-center m-auto  text-2xl font-bold text-primary py-2">
         WE ARE TRUSTED BY
       </h1>
-      <hr />
       <br />
       <div className=" grid lg:grid-cols-6 sm:grid-cols-2 xs:grid-cols-2 gap-2 justify-items-center">
         <img

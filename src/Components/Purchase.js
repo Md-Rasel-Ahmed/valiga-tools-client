@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../firebase.init";
 
@@ -10,6 +10,8 @@ const Purchase = () => {
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [user] = useAuthState(auth);
+  const [btnLoadin, setBtnLoadin] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://valiga-hardware.herokuapp.com/")
       .then((res) => res.json())
@@ -41,6 +43,7 @@ const Purchase = () => {
 
   // handle purchase button click
   const handlePurchase = (e) => {
+    setBtnLoadin(true);
     e.preventDefault();
     const totalPrice = price || item?.price * item?.minimumOrder;
     fetch("https://valiga-hardware.herokuapp.com/order", {
@@ -58,7 +61,11 @@ const Purchase = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        setBtnLoadin(false);
+        toast.success("Purchase successful");
+        navigate("/dasboard/myorder");
+      });
   };
 
   return (
@@ -130,7 +137,10 @@ const Purchase = () => {
             placeholder="Phone Number"
             class="input input-bordered mt-3 block w-96 "
           />
-          <button type="submit" class="btn btn-dark btn-block mt-3 w-96">
+          <button
+            type="submit"
+            className={`btn btn-dark btn-block ${btnLoadin && "loading"}`}
+          >
             Purchase Now
           </button>
         </form>

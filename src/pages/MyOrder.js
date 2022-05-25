@@ -6,6 +6,7 @@ import Loading from "../Components/Loading";
 import { useQuery } from "react-query";
 import auth from "../firebase.init";
 import Modal from "../Components/Modal";
+import { toast } from "react-toastify";
 const MyOrder = () => {
   //   const [myOrder, setMyOrder] = useState([]);
   const [user] = useAuthState(auth);
@@ -36,24 +37,16 @@ const MyOrder = () => {
       });
   }
 
-  // const removeOrder = (id) => {
-  //   // console.log(id);
-  //   let deleteItem = myOrder?.find((item) => item._id === id);
-  //   if (deleteItem.paid === true) {
-  //     fetching(id);
-  //     // refetch();
-  //   } else {
-  //     fetching(id);
-  //   }
-  // };
   //delete item using modal dialog
   const handleDeleteWithConfirmation = (id) => {
     // console.log(id);
     let deleteItem = myOrder?.find((item) => item._id === id);
     if (deleteItem.paid === true) {
       fetching(id);
+
       // refetch();
     } else {
+      toast.error(`${deleteItem.name} has been deleted`);
       fetching(id);
     }
   };
@@ -61,35 +54,23 @@ const MyOrder = () => {
   return (
     <div>
       {myOrder?.length > 0 ? (
-        <div class="overflow-x-auto w-full">
-          <table class="table w-full ">
+        <div class="overflow-x-auto mt-5">
+          <table class="able table-compact w-full ">
             {/* <!-- head --> */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" class="checkbox" />
-                  </label>
-                </th>
                 <th>Email</th>
                 <th>Item Name</th>
                 <th>Item Price</th>
                 <th>Item Quantity</th>
                 <th>Payment</th>
                 <th>Action</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
-              {/* <!-- row 1 --> */}
               {myOrder?.map((item) => {
                 return (
                   <tr>
-                    <th>
-                      <label>
-                        <input type="checkbox" class="checkbox" />
-                      </label>
-                    </th>
                     <td>
                       <div class="font-bold">{item.email}</div>
                       {/* <div class="text-sm opacity-50">United States</div> */}
@@ -113,13 +94,7 @@ const MyOrder = () => {
                     </td>
                     <td>
                       {item.paid ? (
-                        // <a
-                        //   onClick={() => removeOrder(item._id)}
-                        //   class="btn btn-error"
-                        // >
-                        //   Cancle
-                        // </a>
-                        ""
+                        <a href="#">{item.tnxId}</a>
                       ) : (
                         <label
                           for="my-modal"
@@ -134,7 +109,6 @@ const MyOrder = () => {
                 );
               })}
             </tbody>
-            {/* <!-- foot --> */}
           </table>
         </div>
       ) : (

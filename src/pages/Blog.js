@@ -20,6 +20,7 @@ const Blog = () => {
           <p>5.Lazy Loading images in React</p>
         </div>
       </div>
+
       <div class="collapse mt-5">
         <input type="checkbox" class="peer" />
         <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
@@ -52,6 +53,25 @@ const Blog = () => {
           </p>
         </div>
       </div>
+      <div class="collapse mt-5">
+        <input type="checkbox" class="peer" />
+        <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+          <h1 className="text-2xl font-bold">
+            {" "}
+            What is a unit test? Why should write unit tests?
+          </h1>
+        </div>
+        <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+          <p>
+            The main objective of unit testing is to isolate written code to
+            test and determine if it works as intended. Unit testing is an
+            important step in the development process, because if done
+            correctly, it can help detect early flaws in code which may be more
+            difficult to find in later testing stages.
+          </p>
+        </div>
+      </div>
+
       <div class="collapse mt-5">
         <input type="checkbox" class="peer" />
         <div class="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">

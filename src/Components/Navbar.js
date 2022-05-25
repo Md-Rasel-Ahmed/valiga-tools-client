@@ -8,7 +8,7 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   return (
     <div>
-      <div class="navbar bg-neutral text-neutral-content">
+      <div class="navbar bg-primary text-neutral-content">
         <div class="navbar-start">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -39,7 +39,7 @@ const Navbar = () => {
               </li>
 
               {!user?.email && (
-                <li className="btn btn-primary">
+                <li className="btn btn-dark">
                   <Link to="/login">Login</Link>
                 </li>
               )}
@@ -59,7 +59,7 @@ const Navbar = () => {
             </li>
 
             {!user?.email && (
-              <li className="btn btn-primary">
+              <li className="btn btn-dark">
                 <Link to="/login">Login</Link>
               </li>
             )}
@@ -78,7 +78,7 @@ const Navbar = () => {
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-primary rounded-box w-52"
               >
                 <li>
-                  <Link to="/dasboard">Dashboard</Link>
+                  <Link to="/dasboard/myprofile">Dashboard</Link>
                 </li>
                 <li>
                   <a>Settings</a>

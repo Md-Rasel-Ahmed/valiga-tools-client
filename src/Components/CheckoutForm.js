@@ -29,8 +29,13 @@ const CheckoutForm = ({ id }) => {
       toast.error(error.message);
       console.log("[error]", error);
     } else {
-      await fetch(`https://valiga-hardware.herokuapp.com/order/${id}`, {
+      let url = `https://valiga-hardware.herokuapp.com/order/${id}`;
+      await fetch(url, {
         method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tnxId: paymentMethod.id }),
       })
         .then((res) => res.json())
         .then((data) => console.log(data));

@@ -74,6 +74,7 @@ const Contact = () => {
               id=""
               cols="30"
               rows="10"
+              placeholder="Message...."
               className="input input-bordered mt-3 block  w-96"
             ></textarea>
             <button type="submit" class="btn btn-primary btn-block mt-3 w-80">
