@@ -53,6 +53,22 @@ const Login = () => {
       e.target.email.value,
       e.target.password.value
     );
+
+    await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { "content-Type": "application/json" },
+      body: JSON.stringify({ email: e.target.email.value }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("accessToken", data.accessToken);
+      });
+
+    // const { data } = await axios.post("http://localhost:5000/login", {
+    //   email: e.target.email.value,
+    // });
+    // console.log(data);
   };
 
   return (
